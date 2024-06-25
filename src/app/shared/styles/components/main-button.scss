@@ -1,0 +1,30 @@
+.main-btn {
+  background-color: $app-primary;
+  color: $white !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  font-size: 14px;
+  border-radius: 8px;
+  padding: 6px 10px;
+  width: 100%;
+
+  &:hover {
+    background-color: $app-primary;
+    transition: all ease-in-out 350ms;
+  }
+
+  //tablet
+  @include bp-min-width($bp-bootstrap-md) {
+    padding: 10px 16px;
+  }
+
+  //desktop
+  @include bp-min-width($bp-bootstrap-xl) {
+    padding: 10px 16px;
+  }
+
+
+}

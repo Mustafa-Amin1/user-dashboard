@@ -1,5 +1,65 @@
-/****** bootstrap package *******/
-@import "~bootstrap/dist/css/bootstrap.min.css";
-/******variables*******/
-@import './app/shared/styles/variables/index'
+/******shared styles*******/
+@import './app/shared/styles/index';
 
+
+
+:root {
+    font-size: 16px;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "NSDisplay", Georgia, Times, 'Times New Roman', serif;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: $white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+}
+a:hover {
+    color: var(--bs-link-hover-color);
+    color: inherit;}
+
+p {
+    margin-bottom: 0
+}
+
+ul,
+ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.app-container {
+    padding-inline: toRem(16);
+
+    //tablet
+    @include bp-min-width($bp-bootstrap-md) {
+        padding-inline: 1.9vw;
+    }
+
+    // lg-screen
+    @include bp-min-width($bp-bootstrap-xl) {
+        // padding-inline: toRem(80) !important;
+        padding-inline: clamp(104px, 2vw, toVw(104));
+
+    }
+}

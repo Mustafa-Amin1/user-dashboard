@@ -1,0 +1,19 @@
+@use "sass:math";
+
+// convert px to rem
+@function toRem($value) {
+  $remValue: math.div($value, 16) + rem;
+  @return $remValue;
+}
+
+// convert px to vw
+$vw-viewport: 1920;
+
+@function toVw($font) {
+  $vw-context: $vw-viewport * 0.01;
+  @return (math.div($font, $vw-context) * 1vw);
+}
+
+@function calcVw($screen-viewport, $font) {
+  @return (math.div($font, ($screen-viewport * 0.01)) * 1vw);
+}

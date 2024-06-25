@@ -1,0 +1,64 @@
+@font-face {
+  font-family: "NSDisplay";
+  src: url("../../../../assets/fonts/sf-ui-display/sf-ui-display-thin.otf");
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "NSDisplay";
+  src: url("../../../../assets/fonts/sf-ui-display/sf-ui-display-light.otf");
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "NSDisplay";
+  src: url("../../../../assets/fonts/sf-ui-display/sf-ui-display-regular.ttf");
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "NSDisplay";
+  src: url("../../../../assets/fonts/sf-ui-display/sf-ui-display-medium.otf");
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "NSDisplay";
+  src: url("../../../../assets/fonts/sf-ui-display/sf-ui-display-semibold.otf");
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "NSDisplay";
+  src: url("../../../../assets/fonts/sf-ui-display/sf-ui-display-bold.otf");
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+}
+
+
+.font-regular {
+  font-weight: 400;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}

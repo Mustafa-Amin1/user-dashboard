@@ -1,0 +1,41 @@
+@import '../../../../shared/styles/index';
+@import '../../../../shared/styles/components/main-button.scss';
+
+.navbar-wrapper {
+  max-height: toRem(70);
+  height: toRem(70);
+
+  .navbar {
+    background-color: $white;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+
+    .navbar-brand {
+      img {
+        width: toRem(124);
+        max-width: toRem(124);
+        height: toRem(40);
+        max-height: toRem(40);
+      }
+
+    }
+
+    a {
+      font-size: toRem(15);
+      color: $gray;
+      transition: .2s all;
+      text-transform: uppercase;
+
+      &:hover {
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.app-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -1,0 +1,27 @@
+@import "../variables/break-points.scss";
+
+/**
+* Media Breakpoints.
+*
+* Ex:
+*   @include bp-max-width($bp-mobile-max-tablet-min) {
+*     SCSS Rules .....
+*   }
+*/
+@mixin bp-max-width($screen-size) {
+  @media only screen and (max-width: #{$screen-size - .5px}) {
+    @content;
+  }
+}
+
+@mixin bp-min-width($screen-size) {
+  @media only screen and (min-width: $screen-size) {
+    @content;
+  }
+}
+
+@mixin bp-min-max-width($min-width, $max-width) {
+  @media (min-width: $min-width) and (max-width: #{$max-width - .5px}) {
+    @content;
+  }
+}
