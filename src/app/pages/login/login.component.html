@@ -1,0 +1,51 @@
+<div class="login-page position-relative">
+  <div class="container h-100">
+    <div class="row flex-row form ">
+      <div
+        class="logo content flex justify-content-start col-sm-5 justify-content-between align-items-center d-none d-md-inline-block">
+        <img src="../../../assets/images/login.png" alt="login background" class="img-fluid" />
+      </div>
+      <div class="content col-12 col-md-7 d-flex flex-column justify-content-center">
+        <h1 class="col-sm-8 header">Welcome back, please sign in</h1>
+        <!--  Start Login Form  -->
+        <form [formGroup]="loginForm" (ngSubmit)="login()" class="col-sm-10">
+          <div class="mb-3">
+            <label for="email" class="form-label">Username</label>
+            <input type="text" class="form-control" id="email" formControlName="email" placeholder="Type your user name" required>
+            <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+              <div *ngIf="loginForm.get('email')?.errors?.['required']">
+                Username is required.
+              </div>
+              <div *ngIf="loginForm.get('email')?.errors?.['minlength']">
+                Username must be at least 4 characters.
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password" required minlength="8" placeholder="Type your Password">
+            <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+              <div *ngIf="loginForm.get('password')?.errors?.['required']">
+                Password is required.
+              </div>
+              <div *ngIf="loginForm.get('password')?.errors?.['minlength']">
+                Password must be at least 8 characters.
+              </div>
+            </div>
+          </div>
+
+          <div class="confirm-btn d-flex justify-content-between align-items-center">
+            <span class="text-xs">
+              <a routerLink="/auth/forgot-password" class="forgot-password">Forgot Passowrd ?
+              </a>
+            </span>
+            <div class="col-auto">
+              <button type="submit" class="btn main-btn" [disabled]="!loginForm.valid">LOGIN</button>
+            </div>
+          </div>
+        </form>
+        <!--  End  Login Form  -->
+      </div>
+    </div>
+  </div>
+</div>

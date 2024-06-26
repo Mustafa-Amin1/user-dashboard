@@ -12,7 +12,8 @@
                     <a routerLink="/home" routerLinkActive="active" #homeLink="routerLinkActive" class="nav-item nav-link active font-regular">Home</a>
                     <a routerLink="/about" routerLinkActive="active" #aboutLink="routerLinkActive" class="nav-item nav-link font-regular">About</a>
                     <a routerLink="/contact" routerLinkActive="active" #contactLink="routerLinkActive" class="nav-item nav-link font-regular">Contact</a>
-                    <a routerLink="/login" routerLinkActive="active" #loginLink="routerLinkActive" class="nav-item nav-link font-regular main-btn">Login</a>
+                    <a routerLink="/login" routerLinkActive="active" #loginLink="routerLinkActive" class="nav-item nav-link font-regular main-btn" *ngIf="!isLoggedIn">Login</a>
+                    <a routerLink="/dashboard" routerLinkActive="active" #loginLink="routerLinkActive" class="nav-item nav-link font-regular main-btn" *ngIf="isLoggedIn">Enquire</a>
                 </div>
             </div>
         </div>

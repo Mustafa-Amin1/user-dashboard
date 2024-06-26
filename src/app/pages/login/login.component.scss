@@ -1,0 +1,16 @@
+@import '../../shared/styles/shared/index';
+@import '../../../app/shared/styles/components/main-button.scss';
+
+.login-page {
+  margin-top: toVw(30);
+  min-height: 168.5vh;
+  height: 168.5vh;
+
+  .forgot-password {
+    color: #9A9FA5;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+}
