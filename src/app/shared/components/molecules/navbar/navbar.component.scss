@@ -1,5 +1,5 @@
-@import '../../../../shared/styles/index';
-@import '../../../../shared/styles/components/main-button.scss';
+@import "../../../../shared/styles/index";
+@import "../../../../shared/styles/components/main-button.scss";
 
 .navbar-wrapper {
   max-height: toRem(70);
@@ -7,7 +7,7 @@
 
   .navbar {
     background-color: $white;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
 
     .navbar-brand {
       img {
@@ -15,14 +15,14 @@
         max-width: toRem(124);
         height: toRem(40);
         max-height: toRem(40);
+        vertical-align: unset !important;
       }
-
     }
 
     a {
       font-size: toRem(15);
       color: $gray;
-      transition: .2s all;
+      transition: 0.2s all;
       text-transform: uppercase;
 
       &:hover {

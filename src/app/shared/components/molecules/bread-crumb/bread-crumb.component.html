@@ -1,0 +1,5 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item " *ngFor="let link of links ; trackBy: trackByFn"><a class="font-primary" [routerLink]="link.url">{{link.name}}</a></li>
+    </ol>
+  </nav>

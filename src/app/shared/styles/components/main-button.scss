@@ -7,9 +7,10 @@
   outline: none;
   border: none;
   font-size: 14px;
-  border-radius: 8px;
   padding: 6px 10px;
   width: 100%;
+  border-radius: 20px;
+  min-width: 112px;
 
   &:hover {
     background-color: $app-primary;
@@ -25,6 +26,4 @@
   @include bp-min-width($bp-bootstrap-xl) {
     padding: 10px 16px;
   }
-
-
 }

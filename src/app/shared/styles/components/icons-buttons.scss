@@ -1,0 +1,13 @@
+.unbordered-icon-btn {
+  outline: 0px;
+  border: 0px;
+  background: none;
+  color: $app-primary;
+}
+.bordered-icon-btn {
+  background-color: $white;
+  border: 1px solid $app-primary;
+  color: $app-primary;
+  font-size: toRem(15);
+  border-radius: 4px;
+}

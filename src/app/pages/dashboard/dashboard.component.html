@@ -1,1 +1,16 @@
-<p>dashboard works!</p>
+<section class="">
+  <div class="page-header">
+    <div class="app-container">
+      <app-bread-crumb [links]="breadCrumbLinks" />
+      <div class="page-title d-flex flex-row justify-content-between">
+        <h1>Users List</h1>
+        <button class="add-user main-btn">
+          <i class="fa fa-plus me-2" aria-hidden="true"> </i> New User
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="page-content app-container">
+    <app-users-list />
+  </div>
+</section>
