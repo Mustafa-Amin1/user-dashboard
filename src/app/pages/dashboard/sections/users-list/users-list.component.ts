@@ -16,6 +16,8 @@ export class UsersListComponent {
   page: number = 1;
   totalPages: number = 0;
   isLoading: boolean = false;
+  selectedUser!: user | null;
+
   ngOnInit(): void {
     this.isLoading = true;
     this.getUsers();
@@ -40,13 +42,41 @@ export class UsersListComponent {
     }, 1000);
   }
 
-  viewUser(userId: number): void {
+  openUserMenu(): void {
     const menuElement = document.getElementById('user_menu');
-    if (menuElement && menuElement.classList.contains('close')) {
-      menuElement.classList.remove('close');
-    } else {
-      menuElement?.classList.add('close');
+    const tableElement = document.getElementById('users_table');
+    if (tableElement) tableElement.style.borderTopRightRadius = '0px';
+    if (tableElement) tableElement.style.borderBottomRightRadius = '0px';
+    if (menuElement) menuElement?.classList.remove('close');
+    if (menuElement) menuElement?.classList.remove('p-0');
+  }
+  closeUserMenu(): void {
+    const menuElement = document.getElementById('user_menu');
+    const tableElement = document.getElementById('users_table');
+    if (tableElement) tableElement.style.borderTopRightRadius = '10px';
+    if (tableElement) tableElement.style.borderBottomRightRadius = '10px';
+    menuElement?.classList.add('close');
+    menuElement?.classList.add('p-0');
+  }
+  viewUser(userId: number): void {
+    //should use ngrx to check if user get called before
+    if (this.selectedUser && this.selectedUser.id == userId) {
+      this.openUserMenu();
+      return;
     }
+    this._api.getReq(`/api/users/${userId}`).subscribe(
+      (res) => {
+        this.selectedUser = null;
+        this.selectedUser = res.data;
+        console.log(this.selectedUser);
+        setTimeout(() => {
+          this.openUserMenu();
+        }, 0);
+      },
+      (err) => {
+        //error handling
+      }
+    );
   }
 
   deleteUser(userId: number): void {}

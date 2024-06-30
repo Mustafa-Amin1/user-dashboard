@@ -1,86 +1,118 @@
-<section
-  class="users-list d-flex flex-row justify-content-start"
-  *ngIf="users && users.length > 0"
->
-  <table class="mb-5">
-    <thead>
-      <tr>
-        <th scope="col" class="col-md-10 text-md-start">User</th>
-        <th scope="col" class="col-md-2 text-md-start">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users; trackBy: trackByFn">
-        <td scope="row" data-label="User" class="text-md-start">
-          <div
-            class="user-data d-flex flex-row justify-content-start align-items-center"
-          >
-            <img
-              [src]="user.avatar"
-              [alt]="user.last_name"
-              width="55"
-              height="55"
-            />
-            <span class="user-name">
-              {{ user.first_name + " " + user.last_name }}
-            </span>
+<section *ngIf="users && users.length > 0">
+  <div
+    class="users-list d-flex flex-row justify-content-start position-relative"
+  >
+    <table class="mb-5" id="users_table">
+      <thead>
+        <tr>
+          <th scope="col" class="col-md-8 text-md-start">User</th>
+          <th scope="col" class="col-md-3 col-lg-2 text-md-start">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; trackBy: trackByFn">
+          <td scope="row" data-label="User" class="text-md-start">
+            <div
+              class="user-data d-flex flex-row justify-content-start align-items-center"
+            >
+              <img
+                [src]="user.avatar"
+                [alt]="user.last_name"
+                width="55"
+                height="55"
+              />
+              <span class="user-name">
+                {{ user.first_name + " " + user.last_name }}
+              </span>
+            </div>
+          </td>
+          <td data-label="Actions" class="text-md-start">
+            <button
+              class="edit-user bordered-icon-btn icon-btn"
+              (click)="editUser(user.id)"
+            >
+              <i class="fa fa-pencil"></i>
+            </button>
+            <button
+              class="delete-user bordered-icon-btn icon-btn"
+              (click)="deleteUser(user.id)"
+            >
+              <i class="fa fa-trash"></i>
+            </button>
+            <button
+              class="show-user unbordered-icon-btn icon-btn"
+              (click)="viewUser(user.id)"
+            >
+              <i class="fa fa-chevron-right"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <caption *ngIf="totalPages != page && users.length > 0">
+        <button
+          *ngIf="!isLoading; else loading"
+          (click)="loadMoreUsers()"
+          class="main-btn app-btn m-auto"
+        >
+          Load More
+        </button>
+        <ng-template #loading>
+          <div class="d-flex flex-column align-items-center loding">
+            <img src="../../../../../assets/images/spinner.svg" />
+            <p class="font-primary">Loading more users</p>
           </div>
-        </td>
-        <td data-label="Actions" class="text-md-start">
+        </ng-template>
+      </caption>
+    </table>
+    <div
+      id="user_menu"
+      class="user-details-menu d-none d-md-inline-block close p-0 mb-5"
+      [ngClass]="{ 'h-auto': page > 1 }"
+    >
+      <div
+        class="user-details d-flex flex-column align-items-center"
+        *ngIf="selectedUser"
+      >
+        <button
+          class="unbordered-icon-btn icon-btn close-btn ms-auto"
+          (click)="closeUserMenu()"
+        >
+          <i class="fa fa-plus"></i>
+        </button>
+        <div class="user-img text-center">
+          <!-- <img src="" alt="user Name" /> -->
+          <figure>
+            <img
+              [src]="selectedUser.avatar"
+              height="127"
+              width="127"
+              [alt]="selectedUser.first_name + ' ' + selectedUser.last_name"
+            />
+
+            <figcaption class="text-center user-name">
+              {{ selectedUser.first_name + " " + selectedUser.last_name }}
+            </figcaption>
+          </figure>
+        </div>
+        <div
+          class="buttons-wrapper d-flex flex-column flex-md-row justify-content-between"
+        >
           <button
-            class="edit-user bordered-icon-btn icon-btn"
-            (click)="editUser(user.id)"
+            class="edit-user app-btn main-btn me-2"
+            (click)="editUser(selectedUser.id)"
           >
             <i class="fa fa-pencil"></i>
+            Edit
           </button>
           <button
-            class="delete-user bordered-icon-btn icon-btn"
-            (click)="deleteUser(user.id)"
+            class="delete-user app-btn main-btn"
+            (click)="deleteUser(selectedUser.id)"
           >
             <i class="fa fa-trash"></i>
+            Delete
           </button>
-          <button
-            class="show-user unbordered-icon-btn icon-btn"
-            (click)="viewUser(user.id)"
-          >
-            <i class="fa fa-chevron-right"></i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-    <caption *ngIf="totalPages != page && users.length > 0">
-      <button
-        *ngIf="!isLoading; else loading"
-        (click)="loadMoreUsers()"
-        class="main-btn m-auto"
-      >
-        Load More
-      </button>
-      <ng-template #loading>
-        <div class="d-flex flex-column align-items-center loding">
-          <img src="../../../../../assets/images/spinner.svg" />
-          <p class="font-primary">Loading more users</p>
         </div>
-      </ng-template>
-    </caption>
-  </table>
-  <div id="user_menu" class="user-details-menu d-none d-md-inline-block close">
-    <div class="d-flex flex-column align-items-center">
-      <div class="user-img">
-        <!-- <img src="" alt="user Name" /> -->
-        <figure>
-          <img
-            src="../../../../../assets/images/user.png"
-            height="127"
-            width="127"
-            alt="The head and torso of a dinosaur skeleton;
-                              it has a large head with long sharp teeth"
-          />
-
-          <figcaption class="text-center">User Name</figcaption>
-        </figure>
       </div>
-      <div class="user-data"></div>
     </div>
   </div>
 </section>
